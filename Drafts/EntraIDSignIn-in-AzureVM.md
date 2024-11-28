@@ -4,6 +4,12 @@ This article describes how to sign in to an Azure VM with an user of Entra ID in
 
 ---
 
+Table of Content
+
++ [Preparation](#preparation)
++ [Scenario 1 - Passwordless Authentication](#scenario-1---passwordless-authentication)
++ [Scenario 2 - Password Authentication](#scenario-2---password-authentication)
+
 ---
 
 ## Preparation
@@ -24,6 +30,8 @@ After you have installed the extension successfully, assign the appropriate RBAC
 
 - Virtual Machine Administrator Login
 - Virtual Machine User Login
+
+These requirements apply to both following scenarios.
 
 ## Scenario 1 - Passwordless Authentication
 
@@ -51,3 +59,8 @@ Following the client-side configure is shown so you could enforce
 This configuration shows you the client-side configuration so you could use the windows logon screen for signing in.
 
 >Note: Important: Remote connection to VMs that are joined to Microsoft Entra ID is allowed only from Windows 10 or later PCs that are either Microsoft Entra registered (minimum required build is 20H1) or Microsoft Entra joined or Microsoft Entra hybrid joined to the same directory as the VM.
+
+1. In the Azure portal, download the RDP-file for connecting to your VM.
+2. Double click it to connect.
+
+> Note: In this case you could use the IP address of your machine and not necessarilly the hostname.
