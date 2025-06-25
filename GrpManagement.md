@@ -1,4 +1,4 @@
-<!-- [x] convert this file to a *.md file -->
+
 # Group Management with Microsoft Graph PowerShell SDK
 
 This document shows you how to perform group management with Microsoft Graph PowerShell SDK.
@@ -17,7 +17,7 @@ Table of Content
 
 ## Sign In to Microsoft.Graph
 
-For group management cmdlet the scope 'Groupo.ReadWrite.All' is needed. Also the 'User.ReadWrite.All' so you can read and change user attributes as well.
+For group management cmdlet the scope 'Group.ReadWrite.All' is needed. Also the 'User.ReadWrite.All' so you can read and change user attributes as well.
 
 ```PowerShell
 Connect-MgGraph -Scopes 'User.ReadWrite.All', 'Group.ReadWrite.All'
@@ -25,7 +25,7 @@ Connect-MgGraph -Scopes 'User.ReadWrite.All', 'Group.ReadWrite.All'
 
 ## Create a new Group
 
-To create a new group use the cmdlet `New-MgGroup`. Use the paramter `-SecurityEnabled` to create a security group, `-MailEnabled:$false` to create a group without a mail address (not mail enabled security group).
+To create a new group use the cmdlet `New-MgGroup`. Use the parameter `-SecurityEnabled` to create a security group, `-MailEnabled:$false` to create a group without a mail address (not mail enabled security group).
 
 ```PowerShell
 New-MgGroup `
@@ -46,7 +46,7 @@ $myGroup | Format-List -Property *
 
 ## Add member(s) to groups
 
-Instead of using Add-MgGroupMember use the cmdlet `New-MgGroupMember`. Use the paramter `-DirectoryObjectId` to indicate the object you would like to add to the group.
+Instead of using Add-MgGroupMember use the cmdlet `New-MgGroupMember`. Use the parameter `-DirectoryObjectId` to indicate the object you would like to add to the group.
 
 ```PowerShell
 $myUser = Get-MgUser -Search '"Displayname:Guido"' -ConsistencyLevel eventual

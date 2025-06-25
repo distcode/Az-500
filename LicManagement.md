@@ -11,6 +11,7 @@ Table of Content
 + [Get License SKUs](#get-license-skus)
 + [Assign licenses](#assign-licenses)
 + [Assign Licenses with options](#assign-licenses-with-options)
++ [Get information of assigned licenses](#get-information-of-assigned-licenses)
 + [Remove a license](#remove-a-license)
 
 ---
@@ -54,7 +55,7 @@ Set-MgUserLicense -UserId $curUser.Id -AddLicenses @{SkuId = $licSKU.SkuId} -Rem
 
 ## Assign Licenses with options
 
-If not all service plans or options of a license are needed an array of disbaled services plan should be created. The items in the array must be objects of type _Microsoft.Graph.PowerShell.Models.MicrosoftGraphServicePlanInfo_.
+If not all service plans or options of a license are needed an array of disabled services plan should be created. The items in the array must be objects of type _Microsoft.Graph.PowerShell.Models.MicrosoftGraphServicePlanInfo_.
 
 In the second line a new license object is created as hashtable. The keys _SkuId_ and _DisabledPlans_ are part of it. This new object is then assigned to the user.
 
@@ -62,6 +63,13 @@ In the second line a new license object is created as hashtable. The keys _SkuId
 $disabledServices = $licSKU.ServicePlans | Where-Object { $_.ServicePlanName -like 'VIVA*' }
 $lic = @{ SkuId = $licSKU.SkuId; DisabledPlans = $disabledServices }
 Set-MgUserLicense -UserId $curUser.Id -AddLicenses $lic -RemoveLicenses @()
+```
+
+## Get information of assigned licenses
+
+```PowerShell
+$curUser = Get-MgUser -Filter "givenname eq 'guido'" -Property 'ID, UsageLocation, UserPrincipalName'
+Get-MgUserLicenseDetail -UserId $curUser.Id
 ```
 
 ## Remove a license

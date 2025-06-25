@@ -11,6 +11,7 @@ Table of Content
 + [Create new user](#create-new-user)
 + [Get a user's information](#get-a-users-information)
 + [Filter users](#filter-users)
++ [Get user's details](#get-users-details)
 + [Change user's setting](#change-users-setting)
 + [Delete user](#delete-user)
 + [Restore deleted user](#restore-deleted-user)
@@ -71,7 +72,20 @@ Get-MgUser -Filter "startswith(city, 'G')"
 ```
 
 > Hint: There are many more operators like endswith, contains, ... see [documentation](https://learn.microsoft.com/en-us/graph/filter-query-parameter?tabs=http).
-<!--[ ] doc bauen, wo nur filtering, search etc beschrieben ist.-->
+
+## Get user's details
+
+```PowerShell
+$curUser = Get-MgUser -Search '"DisplayName:Guido"' -ConsistencyLevel eventual -Property 'ID,UsageLocation'
+$curUser | Format-List *
+```
+
+> Hint: Only the properties passed to the '-Property' parameter are actually returned.
+
+```PowerShell
+$curUser = Get-MgUser -Search '"DisplayName:Guido"' -ConsistencyLevel eventual -Property 'ID,UsageLocation,DisplayName,MailnickName,UserPrincipalName'
+$curUser | Format-List *
+```
 
 ## Change user's setting
 
