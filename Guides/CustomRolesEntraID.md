@@ -6,14 +6,15 @@ This guide shows you how to create, update and remove custom roles in Entra ID.
 
 Table of content
 
-+ [Prerequisites](#prerequisites)
-  + [PowerShell Modules](#powershell-modules)
-  + [Permissions](#permissions)
-+ [Create a custom role](#create-a-custom-role)
-+ [Assign a custom role to a user](#assign-a-custom-role-to-a-user)
-+ [Unassign a custom role](#unassign-a-custom-role)
-+ [Update a custom role](#update-a-custom-role)
-+ [Remove a custom role](#remove-a-custom-role)
+- [How to manage custom roles in Entra ID](#how-to-manage-custom-roles-in-entra-id)
+  - [Prerequisites](#prerequisites)
+    - [PowerShell Modules](#powershell-modules)
+    - [Permissions](#permissions)
+  - [Create a custom role](#create-a-custom-role)
+  - [Assign a custom role to a user](#assign-a-custom-role-to-a-user)
+  - [Unassign a custom role](#unassign-a-custom-role)
+  - [Update a custom role](#update-a-custom-role)
+  - [Remove a custom role](#remove-a-custom-role)
 
 ---
 
@@ -122,7 +123,7 @@ $user = Get-MgUser -Filter "userPrincipalName eq 'sherlock@<yourDomain>'"
 $group = Get-MgGroup -Filter "DisplayName eq 'Detectives'"
 ```
 
-To get the custom role ID use the following command: 
+To get the custom role ID use the following command:
 
 ```PowerShell
 $CustomRole = Get-MgRoleManagementDirectoryRoleDefinition | Where-Object { $_.DisplayName -like 'SC300*' }

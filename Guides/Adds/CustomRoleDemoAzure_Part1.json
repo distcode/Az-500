@@ -1,0 +1,28 @@
+{
+  "Name": "Junior Administrator",
+  "Id": null,
+  "IsCustom": true,
+  "Description": "Can start/stop virtual machines, read/write blobs, manage messages and associate NSGs to NICs and subnets.",
+  "Actions": [
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/deallocate/action",
+    "Microsoft.Compute/virtualMachines/read",
+    "Microsoft.Network/networkInterfaces/read",
+    "Microsoft.Network/networkInterfaces/write",
+    "Microsoft.Network/virtualNetworks/subnets/read",
+    "Microsoft.Network/virtualNetworks/subnets/write",
+    "Microsoft.Network/networkSecurityGroups/join/action"
+  ],
+  "DataActions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+    "Microsoft.Storage/storageAccounts/queueServices/queues/messages/*"
+  ],
+  "NotActions": [],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<your-subscription-id>"
+  ]
+}
